@@ -685,8 +685,12 @@ wishlist:
 [x] What is collection?
 [x] Mongodb vs MySQL
 [x] creation of database, collections, documents
-[ ] find - query & projection
-[ ] use of operators in find() query
+[x] find - query & projection
+[x] use of operators in find() query
+[x] update - updateOne, updateMany
+[x] delete - deleteOne, deleteMany
+[x] cursors - toArray, forEach, limit, skip, sort
+[x] aggregation - group, sort, sum, count, avg, min, max, match
 
 #### Why MongoDB?
 
@@ -870,6 +874,311 @@ db.products.insertMany([
     quantity: 160,
     branch: "B",
     rating: 4.3,
-  }
+  },
 ]);
 ```
+
+- To view all documents in a collection
+
+```javascript
+db.products.find({ branch: "A" });
+```
+
+- To update a single document in a collection
+
+```javascript
+db.products.updateOne(
+  { name: "pen" },
+  {
+    $set: {
+      price: 12,
+      quantity: 120,
+      branch: "B",
+      rating: 4.6,
+      xyz: "abc",
+    },
+  }
+);
+```
+
+- To delete a single field in a document
+
+```javascript
+db.products.updateOne(
+  { name: "pen" },
+  {
+    $unset: {
+      xyz: "",
+    },
+  }
+);
+```
+
+```javascript
+db.products.updateOne(
+  { branch: "A" },
+  {
+    $set: {
+      quantity: 250,
+    },
+  }
+);
+```
+
+```javascript
+db.products.updateMany(
+  { branch: "A" },
+  {
+    $set: {
+      quantity: 250,
+    },
+  }
+);
+```
+
+- To delete a single document from a collection
+
+```javascript
+db.products.deleteOne({ name: "pen" });
+```
+
+- To delete multiple documents from a collection
+
+```javascript
+db.products.deleteMany({ branch: "A" });
+```
+
+- To find all the documents that match an object
+
+```javascript
+db.products.find(
+  { branch: "A" },
+  {
+    _id: 0,
+    name: 1,
+    price: 1,
+    rating: 1,
+  }
+);
+```
+
+#### Operators
+
+- Operators are used to perform operations on data.
+
+less than - $lt
+greater than - $gt
+less than or equal to - $lte
+greater than or equal to - $gte
+equal to - $eq
+not equal to - $ne
+in - $in
+not in - $nin
+exists - $exists
+not exists - $not
+and - $and
+or - $or
+
+- To find all the documents where the rating is greater than or equal to 4.5
+
+```javascript
+db.products.find({
+  rating: {
+    $gte: 4.5,
+  },
+});
+```
+
+- To find all the documents where the rating is equal to 4.8.
+
+```javascript
+db.products.find({
+  rating: {
+    $eq: 4.8,
+  },
+});
+```
+
+or
+
+```javascript
+db.products.find({
+  rating: 4.8,
+});
+```
+
+- To find all the documents where the rating is between 4.0 and 4.5
+
+```javascript
+db.products.find({
+  rating: {
+    $gte: 4.3,
+    $lte: 4.5,
+  },
+});
+```
+
+or
+
+```javascript
+db.products.find({
+  $and: [
+    {
+      rating: { $gte: 4.3 },
+    },
+    {
+      rating: { $lte: 4.5 },
+    },
+  ],
+});
+```
+
+- To find all the documents where the branch is "A" or "B"
+
+```javascript
+db.products.find({
+  branch: {
+    $in: ["A", "B"],
+  },
+});
+```
+
+or
+
+```javascript
+db.products.find({
+  $or: [
+    {
+      branch: "A",
+    },
+    {
+      branch: "B",
+    },
+  ],
+});
+```
+
+- To find all the documents where the branch is not "A" or "B"
+
+```javascript
+db.products.find({
+  branch: {
+    $nin: ["A", "B"],
+  },
+});
+```
+
+#### Cursors
+
+- A cursor is a pointer to the result set of a query.
+- A cursor is used to iterate over the result set of a query.
+- It is an exhaustible iterator. i.e.,
+  - It can be iterated only once.
+  - It cannot be reset.
+  - It cannot be reused.
+
+Examples:
+
+- To convert the result set into an javascript array
+
+```javascript
+db.products.find().toArray();
+```
+
+- To loop through the result set
+
+```javascript
+let docs = 0;
+db.products.find().forEach((doc) => {
+  docs++;
+  print(doc.name, doc.price);
+});
+
+print("Total documents: " + docs);
+```
+
+- To limit the number of documents returned
+
+```javascript
+db.products.find().limit(5);
+```
+
+- To skip the first n documents
+
+```javascript
+db.products.find().skip(5).limit(5);
+```
+
+- To sort the result set
+
+- For Descending order
+
+```javascript
+db.products.find().sort({ quantity: -1, price: 1 });
+```
+
+- For Ascending order
+
+```javascript
+db.products.find().sort({ quantity: 1 });
+```
+
+- To count the number of documents in a collection
+
+```javascript
+db.products.countDocuments();
+```
+
+```javascript
+db.products.countDocuments();
+```
+
+#### Libraries Vs Frameworks
+
+- Libraries are a collection of classes, functions and methods that can be used to perform specific tasks.
+
+- Frameworks are a collection of libraries that are structured in a specific way following a specific design pattern.
+
+```javascript
+let sum = 0;
+
+db.products.find({ branch: "C" }).forEach((doc) => {
+  sum += doc.price;
+});
+print("Total price: " + sum);
+```
+
+#### Aggregations
+
+- Aggregation is the process of processing data and returning computed results.
+
+```javascript
+db.products.aggregate([
+  {
+    $group: {
+      _id: "$branch",
+      total_price: { $sum: "$price" },
+      total_quantity: { $sum: "$quantity" },
+      avg_rating: { $avg: "$rating" },
+      min_price: { $min: "$price" },
+      max_price: { $max: "$price" },
+      count: { $sum: 1 },
+    },
+  },
+]);
+```
+
+```javascript
+db.products.updateOne(
+  { branch: "B" },
+  {
+    $rename: {
+      rating: "score",
+    },
+  }
+);
+```
+
+
+```javascript
+db.products.find({ branch: "B" })
