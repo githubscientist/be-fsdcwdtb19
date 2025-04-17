@@ -599,3 +599,277 @@ Columns in each table:
   - payment_id
   - shipping_address
   - billing_address
+
+Relationships:
+
+- Two tables can be related to each other in:
+
+  - One to One
+  - One to Many
+  - Many to Many
+
+- One to One: A user can have only one profile and a profile can belong to only one user.
+- One to Many: A user can have many orders and an order can belong to only one user.
+- Many to Many: A user can have many products in their wishlist and a product can belong to many users' wishlists.
+
+Constraints:
+
+- They are used to limit the type of data that can go into a table.
+
+Types:
+
+1. Not Null:
+   - A not null constraint is used to ensure that a column cannot have a NULL value.
+   - It is used to ensure that a column must contain a value.
+   - It is used to ensure that a column cannot be left empty.
+2. Unique
+
+- A unique constraint is used to ensure that all values in a column are different.
+
+3. Primary Key:
+   - A primary key is a unique identifier for a record in a table.
+   - A primary key must contain unique values and cannot contain NULL values.
+   - A table can have only one primary key, which may consist of single or multiple columns.
+4. Foreign Key:
+   - A foreign key is a field in one table that is a primary key in another table.
+   - It is used to establish a relationship between two tables.
+
+Products Table and Branches Table:
+
+- It is a one to many relationship. From branches to products.
+- A branch can have many products and a product can belong to only one branch.
+
+users table:
+
+| id  | username | email             | password |
+| --- | -------- | ----------------- | -------- |
+| 1   | sathish  | sathish@gmail.com | 123456   |
+| 2   | krish    | krish@gmail.com   | 123456   |
+
+profile:
+
+| id  | user_id | first_name | last_name | phone | address | profile_pic |
+| --- | ------- | ---------- | --------- | ----- | ------- | ----------- |
+| 1   | 1       | Sathish    | Kumar     | 12345 | address |
+| 2   | 2       | Krish      | Kumar     | 12345 | address |
+
+- relationship: one to one
+- A user can have only one profile
+- A profile can belong to only one user
+
+orders:
+
+| id  | user_id | product_id | quantity | status  | order_date | delivery_date | payment_id | shipping_address | billing_address |
+| --- | ------- | ---------- | -------- | ------- | ---------- | ------------- | ---------- | ---------------- | --------------- |
+| 1   | 1       | 1          | 2        | shipped | 2023-10-01 | 2023-10-05    | 1          | address          | address         |
+| 2   | 1       | 2          | 1        | shipped | 2023-10-02 | 2023-10-06    | 1          | address          | address         |
+
+- relationship: one to many (from users to orders)
+- A user can have many orders
+- An order can belong to only one user
+
+wishlist:
+
+| id  | user_id | product_id | added_date |
+| --- | ------- | ---------- | ---------- |
+| 1   | 1       | 1          | 2023-10-01 |
+| 2   | 1       | 2          | 2023-10-02 |
+| 3   | 2       | 1          | 2023-10-03 |
+
+- relationship: many to many
+- A user can have many products in their wishlist
+- A product can belong to many users' wishlists
+
+[x] Why mongodb?
+[x] What is document?
+[x] What is collection?
+[x] Mongodb vs MySQL
+[x] creation of database, collections, documents
+[ ] find - query & projection
+[ ] use of operators in find() query
+
+#### Why MongoDB?
+
+- MongoDB is a NoSQL database that is used to store unstructured data.
+- MongoDB is used to store data in the form of documents.
+- MongoDB is used to store data in the form of JSON objects.
+- MongoDB is used to store data in the form of collections.
+- MongoDB is used to store data in the form of key-value pairs.
+- MongoDB is easily scalable, flexible and cost-effective.
+
+#### What is a document?
+
+- A document is a record in a MongoDB database.
+- A document is a JSON object.
+- A document can have multiple fields.
+- A document can have nested fields.
+- A document can have arrays.
+- A document can have different data types.
+- A document can have different fields.
+
+#### What is a collection?
+
+- A collection is a group of documents in a MongoDB database.
+- A collection is similar to a table in a relational database.
+- A collection can have multiple documents.
+
+#### MongoDB Queries
+
+- To list all the databases
+
+```javascript
+show databases;
+```
+
+or
+
+```javascript
+show dbs;
+```
+
+- to show the current database
+
+```javascript
+db;
+```
+
+- To create a database
+
+```javascript
+use db_name;
+```
+
+- To list all the collections
+
+```javascript
+show collections;
+```
+
+- To create a collection
+
+```javascript
+db.createCollection("collection_name");
+```
+
+- To drop a collection
+
+```javascript
+db.collection_name.drop();
+```
+
+- To insert a document into a collection
+
+```javascript
+db.products.insertOne({
+  name: "pen",
+  price: 10,
+  quantity: 100,
+  branch: "A",
+  rating: 4.5,
+});
+```
+
+- To insert multiple documents into a collection
+
+```javascript
+db.products.insertMany([
+  {
+    name: "pencil",
+    price: 5,
+    quantity: 200,
+    branch: "A",
+    rating: 4.0,
+  },
+  {
+    name: "eraser",
+    price: 2,
+    quantity: 300,
+    branch: "B",
+    rating: 3.5,
+  },
+  {
+    name: "notebook",
+    price: 20,
+    quantity: 50,
+    branch: "B",
+    rating: 4.8,
+  },
+  {
+    name: "marker",
+    price: 15,
+    quantity: 150,
+    branch: "A",
+    rating: 4.2,
+  },
+  {
+    name: "ruler",
+    price: 8,
+    quantity: 80,
+    branch: "C",
+    rating: 4.1,
+  },
+  {
+    name: "sharpener",
+    price: 3,
+    quantity: 120,
+    branch: "C",
+    rating: 4.3,
+  },
+  {
+    name: "stapler",
+    price: 12,
+    quantity: 60,
+    branch: "A",
+    rating: 4.6,
+  },
+  {
+    name: "tape",
+    price: 6,
+    quantity: 90,
+    branch: "B",
+    rating: 4.4,
+  },
+  {
+    name: "glue",
+    price: 4,
+    quantity: 110,
+    branch: "C",
+    rating: 4.7,
+  },
+  {
+    name: "scissors",
+    price: 18,
+    quantity: 70,
+    branch: "A",
+    rating: 4.9,
+  },
+  {
+    name: "highlighter",
+    price: 9,
+    quantity: 130,
+    branch: "B",
+    rating: 4.0,
+  },
+  {
+    name: "binder",
+    price: 14,
+    quantity: 40,
+    branch: "C",
+    rating: 4.2,
+  },
+  {
+    name: "paper",
+    price: 1,
+    quantity: 200,
+    branch: "A",
+    rating: 4.1,
+  },
+  {
+    name: "clip",
+    price: 7,
+    quantity: 160,
+    branch: "B",
+    rating: 4.3,
+  }
+]);
+```
