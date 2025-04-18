@@ -2,11 +2,11 @@
   "name": "be-fsdcwdtb19",
   "version": "1.0.0",
   "description": "This is a backend repository for FSD-C-WD-T-B19.",
-  "main": "server.js",
+  "main": "server.mjs",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.mjs"
   },
   "repository": {
     "type": "git",
