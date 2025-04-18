@@ -1,0 +1,21 @@
+{
+  "name": "be-fsdcwdtb19",
+  "version": "1.0.0",
+  "description": "This is a backend repository for FSD-C-WD-T-B19.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/githubscientist/be-fsdcwdtb19.git"
+  },
+  "author": "Sathish Gnanaprakasam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/githubscientist/be-fsdcwdtb19/issues"
+  },
+  "homepage": "https://github.com/githubscientist/be-fsdcwdtb19#readme"
+}

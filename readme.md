@@ -1179,6 +1179,64 @@ db.products.updateOne(
 );
 ```
 
-
 ```javascript
-db.products.find({ branch: "B" })
+db.products.find({ branch: "B" });
+```
+
+[x] What is Node JS?
+[x] Understanding Nodemodules
+[x] Package.json , package-lock.json
+[ ] Built In , third party & custom packages
+[x] Dependencies Vs dev dependencies
+[ ] Filesystem in nodejs
+[ ] http module
+
+#### What is Node JS?
+
+- Node.js is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside a web browser.
+
+#### package.json
+
+- The package.json file is a JSON file that contains metadata about the project.
+- It contains information about the project, such as the project name, version, description, author, license, dependencies, and scripts.
+
+#### Version
+
+- The first number is the major version.
+- The second number is the minor version.
+- The third number is the patch version.
+
+#### NPM
+
+- NPM is a package manager for JavaScript.
+- NPM is used to install, update, and manage packages in a Node.js project.
+
+#### Understanding Node Modules
+
+- Node modules are JavaScript files that can be used in a Node.js project.
+- Node modules can be third-party modules, or custom modules.
+
+#### Dependencies Vs Dev Dependencies
+
+#### Built In Packages
+
+- Node.js comes with a set of built-in modules that provide various functionalities.
+- These modules are part of the Node.js core and do not require installation.
+- Some commonly used built-in modules include:
+  - `fs`: File system module for file operations.
+  - `http`: HTTP module for creating web servers and making HTTP requests.
+  - `path`: Path module for working with file and directory paths.
+  - `os`: Operating system module for getting information about the operating system.
+  - `events`: Events module for handling events and event-driven programming.
+  - `util`: Utility module for various utility functions.
+
+#### Third Party Packages
+
+#### Custom Packages
+
+#### JavaScript - NodeJS
+
+- CommonJS(CJS)
+  - require and module.exports
+- ES6 Modules(ESM)
+  - import and export
