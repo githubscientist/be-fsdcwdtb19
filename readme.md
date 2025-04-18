@@ -1186,10 +1186,10 @@ db.products.find({ branch: "B" });
 [x] What is Node JS?
 [x] Understanding Nodemodules
 [x] Package.json , package-lock.json
-[ ] Built In , third party & custom packages
+[x] Built In , third party & custom packages
 [x] Dependencies Vs dev dependencies
 [ ] Filesystem in nodejs
-[ ] http module
+[x] http module
 
 #### What is Node JS?
 
@@ -1199,6 +1199,12 @@ db.products.find({ branch: "B" });
 
 - The package.json file is a JSON file that contains metadata about the project.
 - It contains information about the project, such as the project name, version, description, author, license, dependencies, and scripts.
+
+#### package-lock.json
+
+- The package-lock.json file is a JSON file that contains the exact version of each dependency installed in the project.
+- It is automatically generated when you install a package using npm.
+- It is used to lock the version of each dependency to ensure that the same version is installed when the project is deployed or shared with others.
 
 #### Version
 
@@ -1231,6 +1237,10 @@ db.products.find({ branch: "B" });
   - `util`: Utility module for various utility functions.
 
 #### Third Party Packages
+
+- Third-party packages are modules that are not part of the Node.js core but can be installed from the npm registry.
+- Some of the packages are:
+  - `nodemon`: A utility that monitors for changes in your source code and automatically restarts your server.
 
 #### Custom Packages
 
