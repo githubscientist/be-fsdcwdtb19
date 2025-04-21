@@ -1188,7 +1188,7 @@ db.products.find({ branch: "B" });
 [x] Package.json , package-lock.json
 [x] Built In , third party & custom packages
 [x] Dependencies Vs dev dependencies
-[ ] Filesystem in nodejs
+[x] Filesystem in nodejs
 [x] http module
 
 #### What is Node JS?
@@ -1241,8 +1241,26 @@ db.products.find({ branch: "B" });
 - Third-party packages are modules that are not part of the Node.js core but can be installed from the npm registry.
 - Some of the packages are:
   - `nodemon`: A utility that monitors for changes in your source code and automatically restarts your server.
+  - `express`: A web application framework for Node.js that simplifies the process of building web applications and APIs.
+  - `mongoose`: An ODM (Object Data Modeling) library for MongoDB and Node.js that provides a schema-based solution to model your application data.
+  - `axios`: A promise-based HTTP client for the browser and Node.js that allows you to make HTTP requests.
+  - `dotenv`: A zero-dependency module that loads environment variables from a .env file into process.env.
+  - `cors`: A package that provides a middleware to enable Cross-Origin Resource Sharing (CORS) in your Node.js applications.
+  - `bcrypt`: A library to help you hash passwords and manage user authentication securely.
+  - `jsonwebtoken`: A library to work with JSON Web Tokens (JWT) for authentication and information exchange.
+  - `morgan`: A HTTP request logger middleware for Node.js that simplifies logging requests to the console.
+  - `multer`: A middleware for handling multipart/form-data, which is used for uploading files.
+  - `body-parser`: A middleware to parse incoming request bodies in a middleware before your handlers, available under the req.body property.
+  - `cookie-parser`: A middleware to parse cookies attached to the client request object.
 
 #### Custom Packages
+
+- Custom packages are modules that you create for your own projects.
+- You can create custom packages to encapsulate reusable code and share it across different projects.
+- Examples:
+  - util.js: A utility module that contains helper functions.
+  - math.js: A module that contains mathematical functions.
+  - auth.js: A module that handles user authentication and authorization.
 
 #### JavaScript - NodeJS
 
