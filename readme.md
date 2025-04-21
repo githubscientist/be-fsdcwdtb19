@@ -1268,3 +1268,26 @@ db.products.find({ branch: "B" });
   - require and module.exports
 - ES6 Modules(ESM)
   - import and export
+
+#### utf-8
+
+- utf-8 is a character encoding that can represent every character in the Unicode character set.
+- utf-8 is a variable-length character encoding that can use one to four bytes to represent a character.
+- utf-8 is backward compatible with ASCII.
+- utf-8 is the most widely used character encoding on the web.
+- utf-8 is the default character encoding for HTML5.
+
+[ ] What is express.js?
+[ ] Launch app.listen()
+[ ] What is middleware?
+[ ] Understanding inbuilt middlewares
+[ ] Custom middlewares
+
+#### Port Numbers
+
+- A port number is a 16-bit unsigned integer that identifies a specific process to which a network packet is forwarded when it arrives at a server.
+- Port numbers range from 0 to 65535.
+- Port numbers are divided into three ranges:
+  - Well-known ports: 0 to 1023
+  - Registered ports: 1024 to 49151
+  - Dynamic or private ports: 49152 to 65535
