@@ -1277,8 +1277,8 @@ db.products.find({ branch: "B" });
 - utf-8 is the most widely used character encoding on the web.
 - utf-8 is the default character encoding for HTML5.
 
-[ ] What is express.js?
-[ ] Launch app.listen()
+[x] What is express.js?
+[x] Launch app.listen()
 [ ] What is middleware?
 [ ] Understanding inbuilt middlewares
 [ ] Custom middlewares
@@ -1291,3 +1291,9 @@ db.products.find({ branch: "B" });
   - Well-known ports: 0 to 1023
   - Registered ports: 1024 to 49151
   - Dynamic or private ports: 49152 to 65535
+
+#### What is express.js?
+
+- Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications.
+- In Node.js, the built-in HTTP module is used to create a web server. However, it requires a lot of boilerplate code to set up routes, handle requests, and manage middleware.
+- Express.js simplifies this process by providing a set of features and utilities that make it easier to build web applications.
