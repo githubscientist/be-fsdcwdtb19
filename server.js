@@ -1,11 +1,4 @@
-// import the express module
-const express = require('express');
-
-const app = express();
-
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
+const app = require('./app');
 
 // start the server
 app.listen('3001', '127.0.0.1', () => {
