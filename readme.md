@@ -1279,9 +1279,9 @@ db.products.find({ branch: "B" });
 
 [x] What is express.js?
 [x] Launch app.listen()
-[ ] What is middleware?
-[ ] Understanding inbuilt middlewares
-[ ] Custom middlewares
+[x] What is middleware?
+[x] Understanding inbuilt middlewares
+[x] Custom middlewares
 
 #### Port Numbers
 
@@ -1297,3 +1297,12 @@ db.products.find({ branch: "B" });
 - Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for building web and mobile applications.
 - In Node.js, the built-in HTTP module is used to create a web server. However, it requires a lot of boilerplate code to set up routes, handle requests, and manage middleware.
 - Express.js simplifies this process by providing a set of features and utilities that make it easier to build web applications.
+
+#### What is middleware?
+
+- Middleware is a function that has access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle.
+- Middleware functions can perform the following tasks:
+  - Execute any code.
+  - Make changes to the request and response objects.
+  - End the request-response cycle.
+  - Call the next middleware function in the stack.
