@@ -7,6 +7,9 @@ const errorRoute = require('./utils/errorRoute');
 
 const app = express();
 
+// middleware to parse the request body
+app.use(express.json());
+
 // middleware to log all the requests using morgan
 // app.use(morgan('dev'));
 
