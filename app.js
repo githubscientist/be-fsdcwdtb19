@@ -4,11 +4,15 @@ const userRouter = require('./routes/userRoutes');
 // const morgan = require('morgan');
 const logger = require('./utils/logger');
 const errorRoute = require('./utils/errorRoute');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 // middleware to parse the request body
 app.use(express.json());
+
+// middleware to parse the cookies
+app.use(cookieParser());
 
 // middleware to log all the requests using morgan
 // app.use(morgan('dev'));

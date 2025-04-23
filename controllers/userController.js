@@ -59,28 +59,36 @@ const userController = {
             // create a token for the user
             const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
 
+            // set the token in the httpOnly cookie
+            res.cookie('token', token, {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'Strict'
+            });
+
             // send a response back to the client
-            res.status(200).json({ message: 'Login successful', token });
+            res.status(200).json({ message: 'Login successful' });
         } catch (error) {
             res.status(500).json({ message: 'Login failed' });
         }
     },
     logout: async (req, res) => {
         try {
-            res.status(200).json({ message: 'User logged out successfully' });
+            // clear the cookie
+            res.clearCookie('token', {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'Strict'
+            });
+
+            res.status(200).json({ message: 'Logout success' });
         } catch (error) {
             res.status(500).json({ message: 'Logout failed' });
         }
     },
     me: async (req, res) => {
         try {
-            // get the token from the request header
-            const token = req.headers['authorization'].split(' ')[1];
-
-            // verify the token
-            const decoded = jwt.verify(token, JWT_SECRET);
-
-            const userId = decoded.id;
+            const userId = req.userId;
 
             // find the user in the database
             const user = await User.findById(userId).select('-password -__v -createdAt -updatedAt');
