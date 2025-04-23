@@ -74,7 +74,24 @@ const userController = {
     },
     me: async (req, res) => {
         try {
-            res.status(200).json({ message: 'User profile retrieved successfully' });
+            // get the token from the request header
+            const token = req.headers['authorization'].split(' ')[1];
+
+            // verify the token
+            const decoded = jwt.verify(token, JWT_SECRET);
+
+            const userId = decoded.id;
+
+            // find the user in the database
+            const user = await User.findById(userId).select('-password -__v -createdAt -updatedAt');
+
+            // check if the user exists
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+
+            // send the user details back to the client
+            res.status(200).json({ message: 'User profile retrieved', user });
         } catch (error) {
             res.status(500).json({ message: 'Failed to retrieve user profile' });
         }
