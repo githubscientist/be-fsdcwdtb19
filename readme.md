@@ -1306,3 +1306,27 @@ db.products.find({ branch: "B" });
   - Make changes to the request and response objects.
   - End the request-response cycle.
   - Call the next middleware function in the stack.
+
+#### Status Codes
+
+- 1xx: Informational responses
+- 2xx: Success
+- 3xx: Redirection
+- 4xx: Client errors
+- 5xx: Server errors
+
+- 200: OK
+- 201: Created
+- 204: No Content
+- 301: Moved Permanently
+- 302: Found
+- 304: Not Modified
+- 400: Bad Request
+- 401: Unauthorized
+- 403: Forbidden
+- 404: Not Found
+- 500: Internal Server Error
+- 502: Bad Gateway
+- 503: Service Unavailable
+- 504: Gateway Timeout
+- 511: Network Authentication Required
