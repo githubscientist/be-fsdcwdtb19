@@ -5,6 +5,7 @@ const userRouter = require('./routes/userRoutes');
 const logger = require('./utils/logger');
 const errorRoute = require('./utils/errorRoute');
 const cookieParser = require('cookie-parser');
+const customerRouter = require('./routes/customerRoutes');
 
 const app = express();
 
@@ -20,7 +21,8 @@ app.use(cookieParser());
 // middleware to log all the requests using custom logger
 app.use(logger);
 
-app.use('/users', userRouter);
+app.use('/api/users', userRouter);
+app.use('/api/customers', customerRouter);
 
 // middleware to handle 404 errors
 app.use(errorRoute);
