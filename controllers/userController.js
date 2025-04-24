@@ -62,8 +62,8 @@ const userController = {
             // set the token in the httpOnly cookie
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: true,
-                sameSite: 'Strict'
+                secure: false, // set to true if using https
+                sameSite: 'strict' // set to none if using https
             });
 
             // send a response back to the client
