@@ -6,6 +6,8 @@ const logger = require('./utils/logger');
 const errorRoute = require('./utils/errorRoute');
 const cookieParser = require('cookie-parser');
 const customerRouter = require('./routes/customerRoutes');
+const serviceRouter = require('./routes/serviceRoutes');
+const bookingRouter = require('./routes/bookingRoutes');
 
 const app = express();
 
@@ -23,6 +25,8 @@ app.use(logger);
 
 app.use('/api/users', userRouter);
 app.use('/api/customers', customerRouter);
+app.use('/api/services', serviceRouter);
+app.use('/api/bookings', bookingRouter);
 
 // middleware to handle 404 errors
 app.use(errorRoute);

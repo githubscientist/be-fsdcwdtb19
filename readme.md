@@ -94,3 +94,61 @@ PostMan Documentation URL: https://documenter.getpostman.com/view/29191458/2sB2i
 - Version 1: `/api/v1`
 - Version 2: `/api/v2`
 - Version 3: `/api/v3`
+
+Customer Model
+
+```javascript
+const mongoose = require("mongoose");
+
+const customerSchema = new mongoose.Schema(
+  {
+    name: String,
+    email: String,
+    phone: String,
+    address: String,
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model("Customer", customerSchema, "customers");
+```
+
+User Model
+
+```javascript
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+    },
+    email: String,
+    password: String,
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model("User", userSchema, "users");
+```
+
+Service Model
+
+```javascript
+const mongoose = require("mongoose");
+
+const serviceSchema = new mongoose.Schema(
+  {
+    name: String,
+    description: String,
+    price: Number,
+  },
+  { timestamps: true }
+);
+module.exports = mongoose.model("Service", serviceSchema, "services");
+```
