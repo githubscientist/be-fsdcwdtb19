@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser');
 const customerRouter = require('./routes/customerRoutes');
 const serviceRouter = require('./routes/serviceRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+const uploadRouter = require('./routes/uploadRoutes');
+const fileRouter = require('./routes/fileRoutes');
 
 const app = express();
 
@@ -27,6 +29,8 @@ app.use('/api/users', userRouter);
 app.use('/api/customers', customerRouter);
 app.use('/api/services', serviceRouter);
 app.use('/api/bookings', bookingRouter);
+app.use('/api/uploads', uploadRouter);
+app.use('/api/files', fileRouter);
 
 // middleware to handle 404 errors
 app.use(errorRoute);
