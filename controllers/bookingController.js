@@ -72,7 +72,37 @@ const bookingController = {
         }
     },
     getBookingById: async (req, res) => {
+        try {
+            const { id } = req.params;
+
+            const booking = await Booking.findById(id).populate({ path: 'userId', select: '-password -__v -createdAt -updatedAt' }).populate('customerId').populate('services');
+
+            if (!booking) {
+                return res.status(404).json({ message: 'Booking not found' });
+            }
+
+            res.status(200).json(booking);
+        } catch (error) {
+            res.status(500).json({ message: 'Cannot get booking by id' });
+        }
     },
+    getBookingByQueryId: async (req, res) => {
+        try {
+            // const { id } = req.query;
+            const { id } = req.body;
+
+            const booking = await Booking.findById(id).populate({ path: 'userId', select: '-password -__v -createdAt -updatedAt' }).populate('customerId').populate('services');
+
+            if (!booking) {
+                return res.status(404).json({ message: 'Booking not found' });
+            }
+
+            res.status(200).json(booking);
+        } catch (error) {
+            res.status(500).json({ message: 'Cannot get booking by query id' });
+        }
+    }
+    ,
     updateBooking: async (req, res) => {
     },
     deleteBooking: async (req, res) => {
